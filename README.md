@@ -10,4 +10,5 @@ amin.
 ## Fact
 Apkah anda tau?
 > Susu kental manis bukanlah susu
+
 Susu kental manis dibuat dengan cara menguapkan sebagian air dari susu segar (50 persen) dan ditambah dengan gula 45-50 persen.

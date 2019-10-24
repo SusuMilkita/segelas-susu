@@ -1,0 +1,81 @@
+<!DOCTYPE>
+<head>
+<script>
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("gbr");
+  if (n > slides.length) {
+    slideIndex = 1
+  }
+  if (n < 1) {
+    slideIndex = slides.length
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex - 1].style.display = "block";
+}
+
+var otomatis = false;
+var waktu;
+function jalan() {
+  var elem = document.getElementById("play");
+  if (elem.value == 'Stop') {
+    jalanin(false);
+    elem.value = 'Play';
+  } else if (elem.value == 'Play') {
+    elem.value = 'Stop';
+    jalanin(true);
+
+  }
+}
+
+function jalanin(play_clicked) {
+  if (play_clicked===true) {
+    carousel();
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("gbr");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > x.length) {
+        slideIndex = 1
+      }
+      x[slideIndex - 1].style.display = "block";
+      waktu=setTimeout(carousel, 1000);
+    }
+  } else{
+    window.clearInterval(waktu);
+  }
+}
+</script>
+
+</head>
+<body>
+<div class="container">
+  <img class="gbr " src="img/img-1.jpg" style="width:100%">
+  <img class="gbr " src="img/img-2.jpg" style="width:100%">
+  <img class="gbr " src="img/img-3.jpg" style="width:100%">
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+<div style="text-align:center">
+ <input type="button" id="play" onclick="jalan()" value="Play"></input>
+</div>
+
+</body>
